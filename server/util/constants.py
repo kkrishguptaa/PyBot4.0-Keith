@@ -9,6 +9,6 @@ API_KEY = environ.get("AI21_KEY")
 
 Client = AI21Client(api_key=API_KEY)
 
-Upload_Folder = path.join(path.dirname(__file__), "uploads")
+Upload_Folder = path.join(path.dirname(__file__), "..", "uploads")
 
 Labels_Dict = load_json(open(path.join(Upload_Folder, "labels.json"), "r"))

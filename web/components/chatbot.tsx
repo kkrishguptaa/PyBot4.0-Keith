@@ -25,7 +25,7 @@ function FileUploadChat() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [lastTypewrittenIndex, setLastTypewrittenIndex] = useState<number>();
+  const [lastTypewrittenIndex, setLastTypewrittenIndex] = useState<number>(1);
 
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -53,7 +53,7 @@ function FileUploadChat() {
   const addMessage = (role: string, content: string) => {
     setMessages((prev) => [...prev, { role, content }]);
     if (role === "bot") {
-      setLastTypewrittenIndex(messages.length);
+      setLastTypewrittenIndex(lastTypewrittenIndex);
     }
   };
 
@@ -73,20 +73,20 @@ function FileUploadChat() {
   };
 
   const TypewriterEffect = ({ text }: { text: string }) => {
-    const [displayText, setDisplayText] = useState("");
-    const [currentIndex, setCurrentIndex] = useState(0);
+    // const [displayText, setDisplayText] = useState("");
+    // const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-      if (currentIndex < text.length) {
-        const timer = setTimeout(() => {
-          setDisplayText((prev) => prev + text[currentIndex]);
-          setCurrentIndex((prev) => prev + 1);
-        }, 50);
-        return () => clearTimeout(timer);
-      }
-    }, [currentIndex, text]);
+    // useEffect(() => {
+    //   if (currentIndex < text.length) {
+    //     const timer = setTimeout(() => {
+    //       setDisplayText((prev) => prev + text[currentIndex]);
+    //       setCurrentIndex((prev) => prev + 1);
+    //     }, 50);
+    //     return () => clearTimeout(timer);
+    //   }
+    // }, [currentIndex, text]);
 
-    return <span>{displayText}</span>;
+    return <span>{text}</span>;
   };
 
   return (

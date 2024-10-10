@@ -1,11 +1,11 @@
-import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+import FeaturesSection from "@/components/features";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      <Navbar />
       <Hero />
+      <FeaturesSection />
     </div>
   );
 }
